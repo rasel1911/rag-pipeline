@@ -61,6 +61,10 @@ jupyter notebook
 - Run all cells: Go to **Cell → Run All** in the menu.
 - Ensure all cells execute successfully. This loads data, creates embeddings, and indexes your vector database.
 
+there are two methods to model run:
+1. chucking by passage and vectorize using langchain -> PGvector
+2. chucking by sentence
+
 
 ## 🚀 Step 5: Run the FastAPI Application
 
@@ -96,7 +100,7 @@ image 2:
 # Alternative using curl commands:
 """
 # Create a chunk
-curl -X POST "http://localhost:8000/chunks/" \
+curl -X POST "http://localhost:8001/chunks/" \
      -H "Content-Type: application/json" \
      -d '{
        "chunk_id": 1,
@@ -110,18 +114,18 @@ curl -X POST "http://localhost:8000/chunks/" \
      }'
 
 # Get all chunks
-curl -X GET "http://localhost:8000/chunks/"
+curl -X GET "http://localhost:8001/chunks/"
 
 # Get specific chunk
-curl -X GET "http://localhost:8000/chunks/{chunk-id}"
+curl -X GET "http://localhost:8001/chunks/{chunk-id}"
 
 # Update chunk
-curl -X PUT "http://localhost:8000/chunks/{chunk-id}" \
+curl -X PUT "http://localhost:8001/chunks/{chunk-id}" \
      -H "Content-Type: application/json" \
      -d '{"chunk_text": "Updated text"}'
 
 # Delete chunk
-curl -X DELETE "http://localhost:8000/chunks/{chunk-id}"
+curl -X DELETE "http://localhost:8001/chunks/{chunk-id}"
 """
 
 
